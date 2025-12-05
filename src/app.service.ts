@@ -29,4 +29,9 @@ export class AppService {
     
     return eventoGuardado;
   }
+  async obtenerTodosLosEventos(): Promise<Evento[]> {
+    // .find() busca todo. .exec() ejecuta la consulta.
+    // .sort({ createdAt: -1 }) es opcional: ordena del más nuevo al más viejo
+    return this.eventoModel.find().sort({ createdAt: -1 }).exec();
+  }
 }

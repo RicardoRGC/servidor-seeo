@@ -64,4 +64,13 @@ private readonly logger = new Logger(AppController.name);
       throw error; 
     }
   }
+  @Get('events') // Esto crea la ruta: GET /api/events
+  async descargarEventos() {
+    this.logger.log('📥 Solicitud de descarga de eventos recibida');
+    
+    const eventos = await this.appService.obtenerTodosLosEventos();
+    
+    this.logger.log(`📤 Enviando ${eventos.length} eventos al cliente C#`);
+    return eventos; 
+  }
 }
